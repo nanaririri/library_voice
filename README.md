@@ -1,0 +1,99 @@
+# 인테리어 건축 라이브러리 (Vanilla JS + Vite)
+
+기존 단일 `index.html` 파일을 유지보수 가능한 프론트엔드 프로젝트 구조로 리팩토링한 결과물입니다.
+**디자인, 레이아웃, 텍스트, 이미지, 인터랙션, 기능은 원본과 동일**하며, 코드 구조만 분리했습니다.
+
+## ① 최종 폴더 구조
+
+```
+project/
+├── index.html          # HTML 뼈대 (header, stage, modal, listmap, footer)
+├── package.json         # npm 설정 (dev/build 스크립트)
+├── vite.config.js       # Vite 빌드 설정
+├── .gitignore
+├── src/
+│   ├── css/
+│   │   └── style.css    # 기존 <style> 태그 내용 그대로 분리
+│   ├── js/
+│   │   └── main.js      # 기존 <script> 태그 내용 그대로 분리
+│   └── assets/
+│       └── images/      # (현재 비어 있음 — 아래 "이미지 경로" 참고)
+├── public/               # 정적 파일 폴더 (현재 비어 있음)
+└── dist/                 # npm run build 실행 시 생성되는 배포용 결과물
+```
+
+## ② 각 파일의 역할
+
+| 파일 | 역할 |
+|---|---|
+| `index.html` | 페이지의 정적 뼈대(header, stage 컨테이너, modal, listmap, footer)와 Tailwind CDN, Google Fonts, CSS/JS 연결 |
+| `src/css/style.css` | 전체 디자인(색상 변수, 카드/버튼/모달/리스트맵 스타일, 애니메이션 등) |
+| `src/js/main.js` | 데이터(DATA, COMPANY_OVERRIDES 등), 렌더링 로직(단계별 화면), 검색, 리스트맵, 모달, 히스토리(뒤로가기), 이벤트 위임 등 전체 인터랙션 |
+| `package.json` | npm 스크립트(`dev`, `build`, `preview`) 및 Vite 의존성 정의 |
+| `vite.config.js` | Vite 빌드 설정 (출력 폴더: `dist`) |
+
+## ③ 실행 방법 (개발 서버)
+
+```bash
+npm install
+npm run dev
+```
+
+터미널에 표시되는 로컬 주소(기본 `http://localhost:5173`)를 브라우저에서 열면 됩니다.
+
+## ④ 빌드 방법 (배포용)
+
+```bash
+npm run build
+```
+
+`dist/` 폴더에 배포 가능한 정적 파일(HTML, 해시가 붙은 CSS/JS)이 생성됩니다.
+결과물을 미리 확인하려면:
+
+```bash
+npm run preview
+```
+
+## ⑤ 기존 기능 중 변경된 부분
+
+**기존 기능 변경 없음.**
+
+- `<style>` 내용을 `src/css/style.css`로, `<script>` 내용을 `src/js/main.js`로 **바이트 단위로 동일하게** 옮겼습니다 (내용 자체는 한 글자도 수정하지 않았습니다).
+- 클릭/탭/메뉴/팝업/모달/리스트맵/검색/뒤로가기(History API)/hover/애니메이션 등 모든 인터랙션은 `data-action` 속성 기반 이벤트 위임 방식으로 구현되어 있어 전역 함수에 의존하지 않으므로, `<script type="module">`로 옮겨도 동일하게 동작합니다. (인라인 `onclick=` 같은 속성은 원본에 없었습니다.)
+- Tailwind CDN, Google Fonts 링크는 원본 그대로 `<head>`에 유지했습니다.
+- `npm install`, `npm run dev`, `npm run build` 모두 정상 동작을 확인했습니다 (콘솔/빌드 오류 없음).
+
+## ⑥ 이미지 경로
+
+현재 프로젝트에서 사용하는 모든 이미지는 **GitHub의 외부 URL**(`https://raw.githubusercontent.com/nanaririri/ai/main/...`)로 연결되어 있습니다. 상대경로나 Base64 이미지는 없습니다.
+
+발견된 이미지 목록:
+
+- `logo.png` (헤더 로고)
+- `burim_logo.png` (업체 로고 오버라이드)
+- `yu01.jpg`, `yu02.png`, `yu03.jpg`, `yu04.jpg` (서브 카테고리 이미지)
+- `ago02.jpg` (서브 카테고리 이미지)
+- `material.jpg`, `glass.png` (서브 카테고리 이미지)
+- `01.png` (제품 이미지 오버라이드)
+
+요청하신 대로 **모든 GitHub 이미지 URL을 그대로 유지**했으며, 다운로드하거나 다른 이미지로 교체하지 않았습니다. 현재 URL들은 모두 정상적으로 접근 가능한 형태(raw.githubusercontent.com)이므로 별도 조치가 필요하지 않습니다. 다만 GitHub 저장소가 비공개로 전환되거나 파일이 삭제되면 이미지가 깨질 수 있으니, 장기적으로는 `src/assets/images/`로 이미지를 내려받아 로컬 경로로 전환하는 것을 고려해볼 수 있습니다 (현재는 요청에 따라 변경하지 않았습니다).
+
+## 음성 검색 기능 (2차 업데이트)
+
+기존 검색창(1단계 화면)에 **Web Speech API(SpeechRecognition) 기반 음성 검색**을 추가했습니다.
+
+- 수정 파일: `src/js/main.js` (검색창 HTML 마크업 + 음성 인식 로직), `src/css/style.css` (마이크 버튼 스타일만 추가)
+- 기존 검색 로직(`performSearch`)을 그대로 재사용하며, 별도의 검색 로직을 새로 만들지 않았습니다.
+- 마이크 버튼은 검색창 안, 지우기(×) 버튼과 검색 버튼 사이에 추가되었고 최소 44×44px 터치 영역을 확보했습니다.
+- `SpeechRecognition`/`webkitSpeechRecognition`을 지원하지 않는 브라우저에서는 마이크 버튼이 자동으로 숨김 처리되어 기존 검색 기능에 전혀 영향을 주지 않습니다.
+- 언어는 `ko-KR`, `interimResults: true`로 설정되어 있어 말하는 동안 검색창 텍스트가 실시간으로 갱신됩니다. 최종 인식 결과가 나오면 기존 검색(`performSearch`)이 그대로 실행됩니다.
+- 오류(권한 거부, 미지원, 무음, 네트워크 오류 등)는 기존 검색 결과 드롭다운(`#search-results`) 영역을 재사용해 안내 문구로 표시하며, 어떤 오류가 나도 기존 텍스트 검색은 정상 동작합니다.
+- 접근성: 마이크 버튼에 `aria-label="음성 검색"`, `aria-pressed`를 추가했고, 화면에는 보이지 않는 `aria-live` 영역으로 상태 변화를 스크린리더에 안내합니다.
+- 1단계 화면을 벗어나거나 `Esc`를 누르면 진행 중인 음성 인식을 자동으로 중단합니다.
+- Playwright로 마이크 클릭 → 중간 결과 반영 → 최종 결과로 기존 검색 실행 → 오류 처리 → 미지원 브라우저 시 자동 숨김까지 모두 시뮬레이션하여 정상 동작을 확인했습니다.
+
+## 기술 스택
+
+- **Vanilla JavaScript** (프레임워크 없음 — 원본이 프레임워크 없이 구현되어 있어 그대로 유지)
+- **Vite** — 개발 서버 + 프로덕션 빌드
+- **Tailwind CSS (CDN)** — 원본과 동일하게 CDN 스크립트로 로드
