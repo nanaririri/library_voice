@@ -34,123 +34,196 @@ function companyLogo(name, size){
 const DATA = {
   interior: {
     key:'interior', label:'인테리어', eyebrow:'INTERIOR MATERIALS',
-    desc:'도어부터 창호까지, 실내 공간을 완성하는 마감재를 모았습니다.',
+    desc:'원자재부터 창호, 커튼까지, 실내 공간을 완성하는 마감재를 모았습니다.',
     subs:[
-      {id:'door', name:'도어·중문', icon:'door', groups:[
-        {name:'프리미엄 도어', companies:[
-          co('부림테크','burim-tech',3), co('예림도어시스템','yerim-door',2), co('우드플러스도어','woodplus-door',2)
+      {id:'raw-material', name:'원자재·부자재', icon:'raw-material', groups:[
+        {name:'보드', companies:[
+          co('한솔보드','hansol-board',1), co('성창보드','sungchang-board',2)
         ]},
-        {name:'기능성 도어', companies:[
-          co('세이프도어코리아','safedoor-korea',3), co('테크슬라이딩도어','tech-slidingdoor',2), co('금강방화도어','geumgang-firedoor',3)
-        ]},
-      ]},
-      {id:'floor', name:'바닥재', icon:'floor', groups:[
-        {name:'강마루 · 강화마루', companies:[
-          co('동화마루','donghwa-floor',2), co('구정마루','gujeong-floor',2), co('한솔마루','hansol-floor',1)
-        ]},
-        {name:'타일 · 데코타일', companies:[
-          co('LX데코타일','lx-decotile',2), co('삼정타일','samjeong-tile',2), co('지엔플로어','gn-floor',1)
+        {name:'앳지', companies:[
+          co('삼정엣지테크','samjeong-edgetech',1), co('코리아엣지밴드','korea-edgeband',2)
         ]},
       ]},
-      {id:'bath', name:'바스', icon:'bath', groups:[
-        {name:'욕실 도기 · 세면기', companies:[
-          co('대림바스','daelim-bath',3), co('계림도자기','gyerim-ceramic',2), co('아메리칸스탠다드코리아','as-korea-bath',3)
+      {id:'furniture-living', name:'가구·리빙', icon:'living', groups:[
+        {name:'가구부품 및 하드웨어', companies:[
+          co('하펠레코리아','hafele-korea',3), co('블룸코리아','blum-korea',3), co('삼익하드웨어','samik-hardware',2), co('리바트','livart',3), co('일룸','iloom',2), co('데스커','desker',2)
         ]},
-        {name:'샤워부스 · 월패널', companies:[
-          co('이누스','inus-bath',2), co('로얄앤컴퍼니','royal-company-bath',2), co('신영샤워부스','sinyoung-shower',1)
-        ]},
-      ]},
-      {id:'stone', name:'석재', icon:'stone', groups:[
-        {name:'타일', companies:[
-          co('유송타일','yusong-tile',2), co('아주스톤','aju-stone',2)
-        ]},
-        {name:'천연석재', companies:[
-          co('마블코리아','marble-korea',3), co('대리석나라','marble-nara',2), co('오벨리스크스톤','obelisk-stone',3)
-        ]},
-        {name:'인조대리석', companies:[
-          co('엘지하이막','lg-himacs',3), co('삼성스타론','samsung-staron',3), co('듀폰코리안스톤','dupont-koreanstone',2)
-        ]},
-      ]},
-      {id:'wall', name:'벽장재', icon:'wall', groups:[
-        {name:'추천 업체', companies:[
-          co('포스코휴먼스','posco-humans',3), co('일흥건영','ilheung-geonyeong',2), co('미가월패널','miga-wallpanel',2)
-        ]},
-        {name:'친환경 벽지', companies:[
-          co('신한벽지','shinhan-wallpaper',1), co('LG하우시스벽지','lghausys-wallpaper',2), co('개나리벽지','gaenari-wallpaper',1)
-        ]},
-        {name:'인테리어 벽패널', companies:[
-          co('우드메탈월','woodmetal-wall',2), co('소노바닥재월','sono-wallpanel',2), co('한글라스인테리어','hanglass-interior',3)
+        {name:'소품', companies:[
+          co('AGO','ago',3), co('필립스조명코리아','philips-lighting-korea',3), co('코펜하겐라이팅','copenhagen-lighting',2), co('자코모패브릭','giacomo-fabric',2), co('92 scent','92-scent',2)
         ]},
       ]},
       {id:'kitchen', name:'주방', icon:'kitchen', groups:[
-        {name:'주방가구 · 붙박이장', companies:[
+        {name:'주방가구', companies:[
           co('한샘키친바흐','hanssem-kitchenbach',3), co('에넥스','enex-kitchen',2), co('넵스키친','neps-kitchen',2)
         ]},
-        {name:'주방기기 · 싱크', companies:[
+        {name:'상품', companies:[
+          co('키친아트코리아','kitchenart-korea',2), co('한샘리빙웨어','hanssem-livingware',1)
+        ]},
+        {name:'주방기기', companies:[
           co('인스밸리','insvalley',2), co('신일키친','shinil-kitchen',1), co('하츠주방기기','haatz-kitchen',2)
         ]},
       ]},
-      {id:'living', name:'리빙', icon:'living', groups:[
-        {name:'조명 · 패브릭', companies:[
-          co('AGO','ago',3), co('필립스조명코리아','philips-lighting-korea',3), co('코펜하겐라이팅','copenhagen-lighting',2), co('자코모패브릭','giacomo-fabric',2)
+      {id:'bath', name:'바스', icon:'bath', groups:[
+        {name:'위생도기', companies:[
+          co('대림바스','daelim-bath',3), co('계림도자기','gyerim-ceramic',2), co('아메리칸스탠다드코리아','as-korea-bath',3)
         ]},
-        {name:'향기', companies:[
-          co('92 scent','92-scent',2)
+        {name:'수전/ACC', companies:[
+          co('대림수전','daelim-faucet',2), co('아메리칸스탠다드수전','as-faucet',2)
         ]},
-        {name:'거실가구', companies:[
-          co('리바트','livart',3), co('일룸','iloom',2), co('데스커','desker',2)
+        {name:'욕실가구', companies:[
+          co('이누스','inus-bath',2), co('로얄앤컴퍼니','royal-company-bath',2)
+        ]},
+        {name:'천장/기기', companies:[
+          co('훌라스마트팬','hula-smartfan',2), co('경동나비엔환기','kyungdong-navien-vent',3)
+        ]},
+        {name:'샤워시설', companies:[
+          co('신영샤워부스','sinyoung-shower',1), co('한샤워시스템','han-shower-system',2)
+        ]},
+        {name:'시공자재', companies:[
+          co('바스코리아자재','bath-korea-materials',1), co('욕실시공자재센터','bathroom-construction-materials',2)
+        ]},
+      ]},
+      {id:'door', name:'도어·중문', icon:'door', groups:[
+        {name:'도어', companies:[
+          co('예림도어시스템','yerim-door',2), co('우드플러스도어','woodplus-door',2), co('세이프도어코리아','safedoor-korea',3), co('테크슬라이딩도어','tech-slidingdoor',2), co('금강방화도어','geumgang-firedoor',3)
+        ]},
+        {name:'중문', companies:[
+          co('부림테크','burim-tech',3), co('현대중문시스템','hyundai-jungmun',2)
+        ]},
+        {name:'하드웨어', companies:[
+          co('삼익도어하드웨어','samik-door-hardware',2), co('코리아도어힌지','korea-door-hinge',1)
+        ]},
+      ]},
+      {id:'floor', name:'바닥재', icon:'floor', groups:[
+        {name:'강마루', companies:[
+          co('동화마루','donghwa-floor',2), co('구정마루','gujeong-floor',2), co('한솔마루','hansol-floor',1)
+        ]},
+        {name:'원목마루', companies:[
+          co('한솔원목마루','hansol-solidwood-floor',2)
+        ]},
+        {name:'타일', companies:[
+          co('LX데코타일','lx-decotile',2), co('삼정타일','samjeong-tile',2), co('지엔플로어','gn-floor',1)
+        ]},
+        {name:'장판', companies:[
+          co('LG지분장판','lg-jibun-vinyl',2), co('한화장판','hanwha-vinyl-flooring',2)
+        ]},
+        {name:'계단재', companies:[
+          co('스텝우드','stepwood-stair',1)
+        ]},
+        {name:'카페트', companies:[
+          co('코리아카페트','korea-carpet',2)
+        ]},
+        {name:'보드', companies:[
+          co('마루보드코리아','floorboard-korea',1)
+        ]},
+      ]},
+      {id:'stone', name:'석재', icon:'stone', groups:[
+        {name:'세라믹', companies:[
+          co('아주스톤','aju-stone',2), co('세라스톤','cerastone',2)
+        ]},
+        {name:'타일', companies:[
+          co('유송타일','yusong-tile',2), co('스톤타일플러스','stonetile-plus',2)
+        ]},
+        {name:'E스톤', companies:[
+          co('엘지하이막','lg-himacs',3), co('삼성스타론','samsung-staron',3)
+        ]},
+        {name:'MMA', companies:[
+          co('듀폰코리안스톤','dupont-koreanstone',2), co('MMA스톤코리아','mma-stone-korea',2)
+        ]},
+      ]},
+      {id:'wall', name:'벽장재', icon:'wall', groups:[
+        {name:'벽지', companies:[
+          co('신한벽지','shinhan-wallpaper',1), co('LG하우시스벽지','lghausys-wallpaper',2), co('개나리벽지','gaenari-wallpaper',1)
+        ]},
+        {name:'필름', companies:[
+          co('LX인테리어필름','lx-interior-film',2), co('현대필름','hyundai-film',1)
+        ]},
+        {name:'월패널', companies:[
+          co('미가월패널','miga-wallpanel',2), co('포스코휴먼스','posco-humans',3), co('우드메탈월','woodmetal-wall',2), co('소노바닥재월','sono-wallpanel',2), co('한글라스인테리어','hanglass-interior',3)
         ]},
       ]},
       {id:'window-int', name:'창호', icon:'window', groups:[
-        {name:'실내 창호', companies:[
+        {name:'시스템창호', companies:[
           co('영림임업창호','yeonglim-window',2), co('이건창호인테리어','leegun-window-interior',3), co('필로브창호','pillobe-window',2)
         ]},
-        {name:'중문 · 파티션', companies:[
-          co('자스민중문','jasmine-doorway',1), co('도어라인중문','doorline-partition',2), co('글라스파티션웍스','glass-partition-works',2)
+      ]},
+      {id:'curtain', name:'커튼', icon:'curtain', groups:[
+        {name:'커튼', companies:[
+          co('한섬커튼','hansum-curtain',2), co('코리아블라인드앤커튼','korea-blind-curtain',1)
+        ]},
+      ]},
+      {id:'office', name:'오피스', icon:'office', groups:[
+        {name:'가구부품 및 하드웨어', companies:[
+          co('퍼시스오피스퍼니처','fursys-office',3), co('시디즈오피스','sidiz-office',2)
         ]},
       ]},
     ]
   },
-  exterior: {
-    key:'exterior', label:'외장 건축 기자재', eyebrow:'FACADE & EXTERIOR MATERIALS',
-    desc:'건물의 얼굴을 완성하는 외장 마감재와 옥외 기자재를 소개합니다.',
+  construction: {
+    key:'construction', label:'건축', eyebrow:'CONSTRUCTION MATERIALS',
+    desc:'건물의 얼굴을 완성하는 외장 마감재부터 시공까지, 건축 전반의 기자재를 소개합니다.',
     subs:[
-      {id:'facade', name:'건축마감재', icon:'facade', groups:[
-        {name:'외벽 마감재 (스타코 · 드라이비트)', companies:[
-          co('스타코코리아','stucco-korea',2), co('케이씨씨외단열','kcc-insulation',3), co('삼화페인트외장','samhwa-paint-exterior',2)
+      {id:'construction-work', name:'건축시공', icon:'construction-work', groups:[
+        {name:'단열재', companies:[
+          co('경질우레탄단열재코리아','urethane-insulation-korea',2), co('케이씨씨외단열','kcc-insulation',3)
         ]},
-        {name:'사이딩 · 징크', companies:[
-          co('징크코리아','zinc-korea',3), co('알루코사이딩','alco-siding',2), co('동양강판외장재','dongyang-steel-exterior',2)
+        {name:'도료', companies:[
+          co('삼화페인트외장','samhwa-paint-exterior',2)
+        ]},
+        {name:'방수재', companies:[
+          co('코리아방수시스템','korea-waterproofing',2)
+        ]},
+        {name:'복합코팅', companies:[
+          co('한화복합코팅','hanwha-composite-coating',2)
+        ]},
+        {name:'블록', companies:[
+          co('한일시멘트블록','hanil-cement-block',2)
+        ]},
+        {name:'흡음재', companies:[
+          co('일흥건영','ilheung-geonyeong',2)
+        ]},
+        {name:'유리', companies:[
+          co('한글라스','hanglass-glass',3), co('KCC글라스','kcc-glass',3)
         ]},
       ]},
-      {id:'outdoor', name:'야외', icon:'outdoor', groups:[
-        {name:'데크재', companies:[
-          co('웨스턴레드시더데크','western-redcedar-deck',3), co('이지우드데크','easywood-deck',1), co('서울데크마루','seoul-deck-maru',2)
+      {id:'outdoor-floor', name:'야외 바닥재', icon:'outdoor-floor', groups:[
+        {name:'바닥재', companies:[
+          co('웨스턴레드시더데크','western-redcedar-deck',3), co('이지우드데크','easywood-deck',1), co('서울데크마루','seoul-deck-maru',2), co('컴포시텍','composytec',2), co('그린데크컴포지트','greendeck-composite',1), co('에코우드컴포지트','ecowood-composite',2)
         ]},
-        {name:'야외가구 · 파고라', companies:[
+      ]},
+      {id:'facade', name:'외장재', icon:'facade', groups:[
+        {name:'외장재', companies:[
+          co('스타코코리아','stucco-korea',2), co('징크코리아','zinc-korea',3), co('알루코사이딩','alco-siding',2), co('동양강판외장재','dongyang-steel-exterior',2), co('알코텍','alcotec-acm',2), co('케이에이엘','kal-acm',2), co('대신ACM','daesin-acm',1), co('이건창호','leegun-window',3), co('LX하우시스시스템창호','lxhausys-window',3), co('영림임업외부창호','yeonglim-exterior-window',2), co('알루텍커튼월','alutec-curtainwall',3), co('한화L&C커튼월','hanwha-lnc-curtainwall',3), co('신성이엔지커튼월','sinsung-eng-curtainwall',2)
+        ]},
+      ]},
+      {id:'sculpture', name:'조형물', icon:'sculpture', groups:[
+        {name:'조형물', companies:[
+          co('아트스케이프조형','artscape-sculpture',2), co('코리아조형디자인','korea-sculpture-design',1)
+        ]},
+      ]},
+      {id:'outdoor-furniture', name:'야외가구', icon:'outdoor', groups:[
+        {name:'야외가구', companies:[
           co('아웃도어리빙웍스','outdoor-living-works',2), co('그린파고라','green-pergola',2), co('테라스퍼니처코리아','terrace-furniture-korea',3)
         ]},
       ]},
-      {id:'composite', name:'복합', icon:'composite', groups:[
-        {name:'인테리어', companies:[
-          co('SITE LESS','site-less',3)
-        ]},
-        {name:'유니폼', companies:[
-          co('워크업','workup',2)
-        ]},
-        {name:'알루미늄 복합패널 (ACM)', companies:[
-          co('알코텍','alcotec-acm',2), co('케이에이엘','kal-acm',2), co('대신ACM','daesin-acm',1)
-        ]},
-        {name:'복합 바닥재', companies:[
-          co('컴포시텍','composytec',2), co('그린데크컴포지트','greendeck-composite',1), co('에코우드컴포지트','ecowood-composite',2)
+      {id:'architecture-design', name:'건축설계', icon:'architecture-design', groups:[
+        {name:'건축설계', companies:[
+          co('SITE LESS','site-less',3), co('건축설계스튜디오104','studio104-architecture',3)
         ]},
       ]},
-      {id:'window-ext', name:'창호', icon:'window', groups:[
-        {name:'시스템창호', companies:[
-          co('이건창호','leegun-window',3), co('LX하우시스시스템창호','lxhausys-window',3), co('영림임업외부창호','yeonglim-exterior-window',2)
+      {id:'modular-house', name:'모듈러하우스', icon:'modular-house', groups:[
+        {name:'모듈러하우스', companies:[
+          co('그린모듈러하우스','green-modular-house',2), co('스마트모듈러코리아','smart-modular-korea',2)
         ]},
-        {name:'커튼월', companies:[
-          co('알루텍커튼월','alutec-curtainwall',3), co('한화L&C커튼월','hanwha-lnc-curtainwall',3), co('신성이엔지커튼월','sinsung-eng-curtainwall',2)
+      ]},
+      {id:'construction-service', name:'시공', icon:'construction-service', groups:[
+        {name:'시공', companies:[
+          co('한빛종합건설','hanbit-construction',2), co('대성시공','daesung-construction',1)
+        ]},
+      ]},
+      {id:'etc', name:'기타', icon:'wall', groups:[
+        {name:'기타', companies:[
+          co('워크업','workup',2), co('종합자재상사','general-materials-trading',1)
         ]},
       ]},
     ]
@@ -199,6 +272,14 @@ const ICONS = {
   facade: `<rect x="3" y="4" width="18" height="4"/><rect x="3" y="10" width="18" height="4"/><rect x="3" y="16" width="18" height="4"/>`,
   outdoor: `<path d="M12 2c3 3 5 6 5 9a5 5 0 0 1-10 0c0-3 2-6 5-9z"/><line x1="12" y1="15" x2="12" y2="22"/>`,
   composite: `<path d="M12 3l9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 16l9 4 9-4"/>`,
+  'raw-material': `<rect x="4" y="6" width="16" height="12" rx="0.5"/><line x1="4" y1="10.5" x2="20" y2="10.5"/><line x1="4" y1="14.5" x2="20" y2="14.5"/>`,
+  office: `<rect x="9" y="4" width="6" height="8" rx="0.5"/><line x1="12" y1="12" x2="12" y2="14.5"/><line x1="3" y1="14.5" x2="21" y2="14.5"/><line x1="6" y1="16.5" x2="6" y2="20"/><line x1="18" y1="16.5" x2="18" y2="20"/><line x1="4" y1="20" x2="20" y2="20"/>`,
+  curtain: `<line x1="4" y1="3" x2="4" y2="21"/><line x1="20" y1="3" x2="20" y2="21"/><path d="M8 3c0 4.5 2 4.5 2 9s-2 4.5-2 9"/><path d="M14 3c0 4.5 2 4.5 2 9s-2 4.5-2 9"/>`,
+  sculpture: `<path d="M12 2c2 2.4 4 5.4 4 8.2a4 4 0 0 1-8 0c0-2.8 2-5.8 4-8.2z"/><line x1="12" y1="14.2" x2="12" y2="18"/><line x1="8.5" y1="21" x2="15.5" y2="21"/>`,
+  'architecture-design': `<rect x="3" y="3" width="18" height="18" rx="0.5"/><line x1="7.5" y1="7" x2="7.5" y2="17"/><line x1="7.5" y1="7" x2="17" y2="7"/><line x1="7.5" y1="12" x2="13" y2="12"/>`,
+  'construction-work': `<path d="M6 21V10l6-6 6 6v11"/><line x1="3" y1="21" x2="21" y2="21"/><line x1="9" y1="21" x2="9" y2="14"/><line x1="15" y1="21" x2="15" y2="14"/>`,
+  'construction-service': `<path d="M14.5 6.5a3.5 3.5 0 0 1-4.7 4.7L5 16l3 3 4.8-4.8a3.5 3.5 0 0 1 4.7-4.7l-2.3 2.3-2-2z"/>`,
+  'outdoor-floor': `<line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12.5" x2="21" y2="12.5"/><line x1="3" y1="18" x2="21" y2="18"/><path d="M12 2c2.4 2.4 4 5 4 7.2"/>`,
 };
 function icon(key, cls){
   return `<svg class="${cls||''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${ICONS[key]||ICONS.wall}</svg>`;
@@ -208,6 +289,9 @@ function handleSubImgError(imgEl, iconKey){
   if(!wrap) return;
   wrap.innerHTML = `<div class="w-full h-full flex items-center justify-center" style="color:var(--accent)">${icon(iconKey,'w-6 h-6')}</div>`;
 }
+// 모듈 스크립트는 최상위 함수를 전역에 노출하지 않으므로, HTML의 인라인 onerror="handleSubImgError(...)"에서
+// 호출할 수 있도록 명시적으로 window에 등록합니다.
+window.handleSubImgError = handleSubImgError;
 
 /* material-swatch style gradients standing in for product photography */
 const SWATCHES = [
@@ -670,12 +754,11 @@ const SUB_IMAGES = {
   'stone': 'https://raw.githubusercontent.com/nanaririri/ai/main/rock.JPG',
   'wall': 'https://raw.githubusercontent.com/nanaririri/ai/main/wall.JPG',
   'kitchen': 'https://raw.githubusercontent.com/nanaririri/ai/main/kitchen.JPG',
-  'living': 'https://raw.githubusercontent.com/nanaririri/ai/main/living.JPG',
+  'furniture-living': 'https://raw.githubusercontent.com/nanaririri/ai/main/living.JPG',
   'window-int': 'https://raw.githubusercontent.com/nanaririri/ai/main/window.JPG',
   'facade': 'https://raw.githubusercontent.com/nanaririri/ai/main/material.jpg',
-  'outdoor': 'https://raw.githubusercontent.com/nanaririri/ai/main/outdoor.JPG',
-  'composite': 'https://raw.githubusercontent.com/nanaririri/ai/main/com.JPG',
-  'window-ext': 'https://raw.githubusercontent.com/nanaririri/ai/main/glass.png',
+  'outdoor-furniture': 'https://raw.githubusercontent.com/nanaririri/ai/main/outdoor.JPG',
+  'modular-house': 'https://raw.githubusercontent.com/nanaririri/ai/main/com.JPG',
 };
 
 function stepOneHTML(){
@@ -686,7 +769,7 @@ function stepOneHTML(){
         공간을 만드는<br/><span class="block mt-[16px]">자재를 찾아보세요</span>
       </h1>
       <p class="mt-5 text-[15px] md:text-base max-w-md" style="color:var(--ink-soft)">
-        인테리어 마감재부터 외장 건축 기자재까지, 분야를 선택하고 원하는 업체 정보를 확인하세요.
+        인테리어 마감재부터 건축 기자재까지, 분야를 선택하고 원하는 업체 정보를 확인하세요.
       </p>
     </div>
 
@@ -711,7 +794,7 @@ function stepOneHTML(){
 
     <div class="grid sm:grid-cols-2 gap-5 md:gap-6 stagger">
       ${heroCard('interior')}
-      ${heroCard('exterior')}
+      ${heroCard('construction')}
     </div>
   </div>`;
 }
@@ -772,7 +855,7 @@ function stepThreeHTML(){
     <div class="flex items-center gap-3 mb-2">
       <h2 class="font-display font-900 text-3xl md:text-4xl tracking-tight" style="color:var(--ink)">${m.label} &gt; ${s.name}</h2>
     </div>
-    <p class="text-sm mb-7" style="color:var(--ink-soft)">중분류를 선택해 업체를 필터링하세요</p>
+    <p class="text-sm mb-7" style="color:var(--ink-soft)">소분류를 선택해 업체를 필터링하세요</p>
 
     <!-- filter tabs -->
     <div class="flex gap-2 overflow-x-auto pb-1 mb-8">
