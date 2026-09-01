@@ -157,6 +157,26 @@ const DATA = {
           co('퍼시스오피스퍼니처','fursys-office',3), co('시디즈오피스','sidiz-office',2)
         ]},
       ]},
+      {id:'installation', name:'시공', icon:'construction-service', groups:[
+        {name:'가구시공', companies:[
+          co('가구시공전문코리아','furniture-install-korea',2), co('한샘가구시공','hanssem-furniture-install',2)
+        ]},
+        {name:'주방시공', companies:[
+          co('주방시공마스터','kitchen-install-master',2), co('한샘키친시공','hanssem-kitchen-install',2)
+        ]},
+        {name:'바스시공', companies:[
+          co('바스시공프로','bath-install-pro',2), co('욕실시공센터','bathroom-install-center',1)
+        ]},
+        {name:'오피스시공', companies:[
+          co('오피스인테리어시공','office-interior-install',2), co('사무공간시공','office-space-install',2)
+        ]},
+        {name:'기본공사', companies:[
+          co('기본공사전문업체','basic-construction-specialist',2), co('종합인테리어공사','general-interior-construction',2)
+        ]},
+        {name:'철거', companies:[
+          co('철거전문코리아','demolition-korea',2), co('클린철거서비스','clean-demolition-service',1)
+        ]},
+      ]},
     ]
   },
   construction: {
