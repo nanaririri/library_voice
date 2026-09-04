@@ -989,81 +989,83 @@ function showCompanyModalUI(name){
         </button>
       </div>
 
-      <div class="rounded-sm border overflow-hidden mb-6" style="border-color:var(--border)">
-        <div class="info-row flex items-center justify-between px-4 py-3.5">
-          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">브랜드명</span>
-          <span class="text-sm font-semibold" style="color:var(--ink)">${company.name}</span>
-        </div>
-        <div class="info-row flex items-center justify-between px-4 py-3.5">
-          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">주소</span>
-          <span class="text-sm text-right max-w-[65%]" style="color:var(--ink)">${company.address}</span>
-        </div>
-        <div class="info-row flex items-center justify-between px-4 py-3.5">
-          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">업체 등록 여부</span>
-          <span class="flex items-center gap-1.5 text-sm font-semibold" style="color:${company.registered ? 'var(--accent)' : 'var(--gray)'}">
-            <span class="w-1.5 h-1.5 rounded-full" style="background:${company.registered ? 'var(--accent)' : 'var(--gray)'}"></span>
-            ${company.registered ? '등록' : '미등록'}
-          </span>
-        </div>
-        <div class="info-row flex items-center justify-between px-4 py-3.5">
-          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">가격대</span>
-          <span class="flex items-center gap-1.5 text-sm font-semibold" style="color:var(--ink)">
-            ${wonDots(t.won)}
-            ${t.txt}
-          </span>
-        </div>
-        <div class="info-row flex items-center justify-between px-4 py-3.5">
-          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">대표제품</span>
-          <span class="text-sm text-right max-w-[65%]" style="color:var(--ink)">${company.repProducts}</span>
-        </div>
-        <div class="info-row flex items-center justify-between px-4 py-3.5">
-          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">업태</span>
-          <span class="text-sm font-semibold" style="color:var(--ink)">${company.businessType}</span>
-        </div>
-        <div class="info-row flex items-center justify-between px-4 py-3.5">
-          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">제조국</span>
-          <span class="text-sm font-semibold" style="color:var(--ink)">${company.manufactureCountry}</span>
-        </div>
-        <div class="info-row flex items-center justify-between px-4 py-3.5">
-          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">대표자</span>
-          <span class="text-sm font-semibold" style="color:var(--ink)">${company.ceoName}</span>
-        </div>
-        <div class="info-row flex items-center justify-between px-4 py-3.5">
-          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">대표전화</span>
-          <a href="tel:${company.phone.replace(/-/g,'')}" class="text-sm font-semibold" style="color:var(--accent)">${company.phone}</a>
-        </div>
-        <div class="info-row flex items-center justify-between px-4 py-3.5">
-          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">E-mail</span>
-          <a href="mailto:${company.email}" class="text-sm font-semibold truncate max-w-[65%]" style="color:var(--accent)">${company.email}</a>
-        </div>
-        <div class="info-row flex items-center justify-between gap-3 px-4 py-3.5">
-          <span class="text-xs font-mono tracking-wide shrink-0" style="color:var(--gray)">홈페이지</span>
-          <div class="flex items-center gap-2 min-w-0">
-            <span class="text-sm truncate max-w-[140px] sm:max-w-[180px]" style="color:var(--ink)" title="${company.homepage}">${company.homepage.replace(/^https?:\/\//,'')}</span>
-            <button type="button" data-action="copy-url" data-url="${encodeURIComponent(company.homepage)}" class="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style="background:var(--accent-soft); color:var(--accent)" title="URL 복사">
-              <svg data-copy-icon width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            </button>
-            <a href="${company.homepage}" target="_blank" rel="noopener" class="flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 rounded-full shrink-0" style="background:var(--accent); color:#fff">
-              방문하기
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
-            </a>
+      <div class="grid lg:grid-cols-2 gap-6 mb-6">
+        <div class="rounded-sm border overflow-hidden" style="border-color:var(--border)">
+          <div class="info-row flex items-center justify-between px-4 py-3.5">
+            <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">브랜드명</span>
+            <span class="text-sm font-semibold" style="color:var(--ink)">${company.name}</span>
+          </div>
+          <div class="info-row flex items-center justify-between px-4 py-3.5">
+            <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">주소</span>
+            <span class="text-sm text-right max-w-[65%]" style="color:var(--ink)">${company.address}</span>
+          </div>
+          <div class="info-row flex items-center justify-between px-4 py-3.5">
+            <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">업체 등록 여부</span>
+            <span class="flex items-center gap-1.5 text-sm font-semibold" style="color:${company.registered ? 'var(--accent)' : 'var(--gray)'}">
+              <span class="w-1.5 h-1.5 rounded-full" style="background:${company.registered ? 'var(--accent)' : 'var(--gray)'}"></span>
+              ${company.registered ? '등록' : '미등록'}
+            </span>
+          </div>
+          <div class="info-row flex items-center justify-between px-4 py-3.5">
+            <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">가격대</span>
+            <span class="flex items-center gap-1.5 text-sm font-semibold" style="color:var(--ink)">
+              ${wonDots(t.won)}
+              ${t.txt}
+            </span>
+          </div>
+          <div class="info-row flex items-center justify-between px-4 py-3.5">
+            <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">대표제품</span>
+            <span class="text-sm text-right max-w-[65%]" style="color:var(--ink)">${company.repProducts}</span>
+          </div>
+          <div class="info-row flex items-center justify-between px-4 py-3.5">
+            <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">업태</span>
+            <span class="text-sm font-semibold" style="color:var(--ink)">${company.businessType}</span>
+          </div>
+          <div class="info-row flex items-center justify-between px-4 py-3.5">
+            <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">제조국</span>
+            <span class="text-sm font-semibold" style="color:var(--ink)">${company.manufactureCountry}</span>
+          </div>
+          <div class="info-row flex items-center justify-between px-4 py-3.5">
+            <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">대표자</span>
+            <span class="text-sm font-semibold" style="color:var(--ink)">${company.ceoName}</span>
+          </div>
+          <div class="info-row flex items-center justify-between px-4 py-3.5">
+            <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">대표전화</span>
+            <a href="tel:${company.phone.replace(/-/g,'')}" class="text-sm font-semibold" style="color:var(--accent)">${company.phone}</a>
+          </div>
+          <div class="info-row flex items-center justify-between px-4 py-3.5">
+            <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">E-mail</span>
+            <a href="mailto:${company.email}" class="text-sm font-semibold truncate max-w-[65%]" style="color:var(--accent)">${company.email}</a>
+          </div>
+          <div class="info-row flex items-center justify-between gap-3 px-4 py-3.5">
+            <span class="text-xs font-mono tracking-wide shrink-0" style="color:var(--gray)">홈페이지</span>
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="text-sm truncate max-w-[140px] sm:max-w-[180px]" style="color:var(--ink)" title="${company.homepage}">${company.homepage.replace(/^https?:\/\//,'')}</span>
+              <button type="button" data-action="copy-url" data-url="${encodeURIComponent(company.homepage)}" class="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style="background:var(--accent-soft); color:var(--accent)" title="URL 복사">
+                <svg data-copy-icon width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              </button>
+              <a href="${company.homepage}" target="_blank" rel="noopener" class="flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 rounded-full shrink-0" style="background:var(--accent); color:#fff">
+                방문하기
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="mb-6">
-        <p class="text-xs font-mono tracking-wide mb-3" style="color:var(--gray)">취급 제품</p>
-        <div class="grid grid-cols-2 gap-3">
-          ${products.map(p=>`
-            <div>
-              <div class="product-thumb rounded-sm flex items-center justify-center" style="${hasRealPhotos ? '' : `background:${p.bg}`}">
-                ${hasRealPhotos
-                  ? `<img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover" />`
-                  : `<div style="color:rgba(24,23,15,.55); width:34px; height:34px;">${icon(s.icon,'w-full h-full')}</div>`
-                }
+        <div>
+          <p class="text-xs font-mono tracking-wide mb-3" style="color:var(--gray)">취급 제품</p>
+          <div class="grid grid-cols-2 gap-3">
+            ${products.map(p=>`
+              <div>
+                <div class="product-thumb rounded-sm flex items-center justify-center" style="${hasRealPhotos ? '' : `background:${p.bg}`}">
+                  ${hasRealPhotos
+                    ? `<img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover" />`
+                    : `<div style="color:rgba(24,23,15,.55); width:34px; height:34px;">${icon(s.icon,'w-full h-full')}</div>`
+                  }
+                </div>
               </div>
-            </div>
-          `).join('')}
+            `).join('')}
+          </div>
         </div>
       </div>
 
