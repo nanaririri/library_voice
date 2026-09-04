@@ -1083,7 +1083,7 @@ function showCompanyModalUI(name){
                   <div><span class="font-mono text-[11px]" style="color:var(--gray)">용도</span> <span class="font-medium" style="color:var(--ink)">${spec.purpose}</span></div>
                   <div><span class="font-mono text-[11px]" style="color:var(--gray)">소재</span> <span class="font-medium" style="color:var(--ink)">${spec.material}</span></div>
                   <div><span class="font-mono text-[11px]" style="color:var(--gray)">색상</span> <span class="font-medium" style="color:var(--ink)">${spec.color}</span></div>
-                  <div><span class="font-mono text-[11px]" style="color:var(--gray)">규격</span> <span class="font-medium" style="color:var(--ink)">${spec.size}</span></div>
+                  <div class="flex items-start gap-1"><span class="font-mono text-[11px] shrink-0" style="color:var(--gray)">규격</span><span class="font-medium min-w-0 flex-1" style="color:var(--ink)">${spec.size}</span></div>
                   <div><span class="font-mono text-[11px]" style="color:var(--gray)">무게</span> <span class="font-medium" style="color:var(--ink)">${spec.weight}</span></div>
                 </div>
               </div>
