@@ -340,6 +340,20 @@ const SWATCHES = [
 ];
 function swatch(i){ return SWATCHES[i % SWATCHES.length]; }
 
+/* 취급 제품 카드에 표시할 예시 스펙(용도/소재/색상/규격/무게) — 프로토타입 더미 데이터 */
+const PRODUCT_PURPOSES = ['실내 마감재','실외 마감재','주거공간용','상업공간용','리모델링용','신축 시공용'];
+const PRODUCT_MATERIALS = ['원목','합성수지(PVC)','알루미늄','스틸','세라믹','강화유리','천연석','MDF','패브릭'];
+const PRODUCT_COLORS = ['화이트','베이지','그레이','블랙','우드톤','아이보리','네이비','그린'];
+function productSpecs(i){
+  return {
+    purpose: PRODUCT_PURPOSES[i % PRODUCT_PURPOSES.length],
+    material: PRODUCT_MATERIALS[i % PRODUCT_MATERIALS.length],
+    color: PRODUCT_COLORS[i % PRODUCT_COLORS.length],
+    size: `W${800 + (i*37 % 400)} x H${2000 + (i*53 % 300)} x D${30 + (i*13 % 40)}mm`,
+    weight: `${(2 + (i*7 % 40)/10).toFixed(1)}kg`
+  };
+}
+
 /* generic product line-up per subcategory (dummy prototype data) */
 const PRODUCT_TEMPLATES = {
   'door': ['화이트 무늬목 도어','블랙 프레임 도어','방음 도어','슬라이딩 폴딩도어'],
@@ -1055,7 +1069,9 @@ function showCompanyModalUI(name){
         <div>
           <p class="text-xs font-mono tracking-wide mb-3" style="color:var(--gray)">취급 제품</p>
           <div class="grid grid-cols-2 gap-3">
-            ${products.map(p=>`
+            ${products.map((p,i)=>{
+              const spec = productSpecs(i);
+              return `
               <div>
                 <div class="product-thumb rounded-sm flex items-center justify-center" style="${hasRealPhotos ? '' : `background:${p.bg}`}">
                   ${hasRealPhotos
@@ -1063,8 +1079,15 @@ function showCompanyModalUI(name){
                     : `<div style="color:rgba(24,23,15,.55); width:34px; height:34px;">${icon(s.icon,'w-full h-full')}</div>`
                   }
                 </div>
+                <div class="mt-2 space-y-0.5 text-[11px] leading-snug" style="color:var(--ink-soft)">
+                  <div><span class="font-mono" style="color:var(--gray)">용도</span> ${spec.purpose}</div>
+                  <div><span class="font-mono" style="color:var(--gray)">소재</span> ${spec.material}</div>
+                  <div><span class="font-mono" style="color:var(--gray)">색상</span> ${spec.color}</div>
+                  <div><span class="font-mono" style="color:var(--gray)">규격</span> ${spec.size}</div>
+                  <div><span class="font-mono" style="color:var(--gray)">무게</span> ${spec.weight}</div>
+                </div>
               </div>
-            `).join('')}
+            `;}).join('')}
           </div>
         </div>
       </div>
