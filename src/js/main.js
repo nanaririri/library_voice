@@ -2,6 +2,17 @@
 const CITIES = ['서울 성동구 성수동','경기 파주시 문발동','인천 남동구 남동공단','경기 김포시 대곶면','서울 강서구 마곡동','경기 이천시 마장면','충남 아산시 배방읍','경기 용인시 기흥구','서울 금천구 가산동','경기 화성시 향남읍','경기 광주시 오포읍','전북 완주군 봉동읍'];
 const TIER_LABEL = {1:{txt:'저가형', won:1}, 2:{txt:'중가형', won:2}, 3:{txt:'고가형', won:3}};
 const REP_PRODUCTS = ['공기청정기','환기장치','우드 실링팬','인테리어 조명','무드등','식물재배기','스마트 도어락','제습기','블라인드','붙박이 수납장'];
+const CEO_NAMES = ['김민준','이서연','박도윤','최지우','정하은','강시우','조서준','윤지안','장하윤','임은우','한재원','오수아'];
+const BUSINESS_TYPES = ['제조','유통'];
+const MANUFACTURE_COUNTRIES = ['국산','중국','이태리'];
+const AREA_CODES = ['02','031','032','041','051','053','062','063'];
+function genPhone(idx){
+  const area = AREA_CODES[idx % AREA_CODES.length];
+  const midLen = area==='02' ? 4 : 3;
+  const mid = String(1000 + (idx*13 % 9000)).slice(0, midLen);
+  const last = 1000 + (idx*37 % 9000);
+  return `${area}-${mid}-${last}`;
+}
 let _cityIdx = 0;
 function pickProducts(){
   const start = _cityIdx % REP_PRODUCTS.length;
@@ -15,7 +26,12 @@ function co(name, slug, tier){
     homepage: `https://www.${slug}.co.kr`,
     address: `${city} ${20 + (_cityIdx*7 % 60)}-${3 + (_cityIdx*3 % 20)} 자재유통센터`,
     catalog: `${slug}_catalog_2026.pdf`,
-    repProducts: pickProducts()
+    repProducts: pickProducts(),
+    businessType: BUSINESS_TYPES[_cityIdx % BUSINESS_TYPES.length],
+    manufactureCountry: MANUFACTURE_COUNTRIES[_cityIdx % MANUFACTURE_COUNTRIES.length],
+    ceoName: CEO_NAMES[_cityIdx % CEO_NAMES.length],
+    phone: genPhone(_cityIdx),
+    email: `contact@${slug}.co.kr`
   };
 }
 const LOGO_IMAGE_OVERRIDES = {
@@ -1000,6 +1016,26 @@ function showCompanyModalUI(name){
           <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">대표제품</span>
           <span class="text-sm text-right max-w-[65%]" style="color:var(--ink)">${company.repProducts}</span>
         </div>
+        <div class="info-row flex items-center justify-between px-4 py-3.5">
+          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">업태</span>
+          <span class="text-sm font-semibold" style="color:var(--ink)">${company.businessType}</span>
+        </div>
+        <div class="info-row flex items-center justify-between px-4 py-3.5">
+          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">제조국</span>
+          <span class="text-sm font-semibold" style="color:var(--ink)">${company.manufactureCountry}</span>
+        </div>
+        <div class="info-row flex items-center justify-between px-4 py-3.5">
+          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">대표자</span>
+          <span class="text-sm font-semibold" style="color:var(--ink)">${company.ceoName}</span>
+        </div>
+        <div class="info-row flex items-center justify-between px-4 py-3.5">
+          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">대표전화</span>
+          <a href="tel:${company.phone.replace(/-/g,'')}" class="text-sm font-semibold" style="color:var(--accent)">${company.phone}</a>
+        </div>
+        <div class="info-row flex items-center justify-between px-4 py-3.5">
+          <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">E-mail</span>
+          <a href="mailto:${company.email}" class="text-sm font-semibold truncate max-w-[65%]" style="color:var(--accent)">${company.email}</a>
+        </div>
         <div class="info-row flex items-center justify-between gap-3 px-4 py-3.5">
           <span class="text-xs font-mono tracking-wide shrink-0" style="color:var(--gray)">홈페이지</span>
           <div class="flex items-center gap-2 min-w-0">
@@ -1108,6 +1144,11 @@ function downloadCatalog(name){
 홈페이지   : ${company.homepage}
 주소       : ${company.address}
 가격대     : ${t.txt}
+업태       : ${company.businessType}
+제조국     : ${company.manufactureCountry}
+대표자     : ${company.ceoName}
+대표전화   : ${company.phone}
+E-mail     : ${company.email}
 ------------------------------------------------
 본 파일은 프로토타입 데모용으로 생성된 더미 카탈로그입니다.`;
   const blob = new Blob([content], {type:'text/plain;charset=utf-8'});
