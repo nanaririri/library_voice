@@ -1079,24 +1079,25 @@ function showCompanyModalUI(name){
                     : `<div style="color:rgba(24,23,15,.55); width:34px; height:34px;">${icon(s.icon,'w-full h-full')}</div>`
                   }
                 </div>
-                <div class="mt-2 space-y-0.5 text-[11px] leading-snug" style="color:var(--ink-soft)">
-                  <div><span class="font-mono" style="color:var(--gray)">용도</span> ${spec.purpose}</div>
-                  <div><span class="font-mono" style="color:var(--gray)">소재</span> ${spec.material}</div>
-                  <div><span class="font-mono" style="color:var(--gray)">색상</span> ${spec.color}</div>
-                  <div><span class="font-mono" style="color:var(--gray)">규격</span> ${spec.size}</div>
-                  <div><span class="font-mono" style="color:var(--gray)">무게</span> ${spec.weight}</div>
+                <div class="mt-2 space-y-1 text-sm leading-snug">
+                  <div><span class="font-mono text-[11px]" style="color:var(--gray)">용도</span> <span class="font-medium" style="color:var(--ink)">${spec.purpose}</span></div>
+                  <div><span class="font-mono text-[11px]" style="color:var(--gray)">소재</span> <span class="font-medium" style="color:var(--ink)">${spec.material}</span></div>
+                  <div><span class="font-mono text-[11px]" style="color:var(--gray)">색상</span> <span class="font-medium" style="color:var(--ink)">${spec.color}</span></div>
+                  <div><span class="font-mono text-[11px]" style="color:var(--gray)">규격</span> <span class="font-medium" style="color:var(--ink)">${spec.size}</span></div>
+                  <div><span class="font-mono text-[11px]" style="color:var(--gray)">무게</span> <span class="font-medium" style="color:var(--ink)">${spec.weight}</span></div>
                 </div>
               </div>
             `;}).join('')}
           </div>
         </div>
       </div>
-
-      <button data-action="download-catalog" data-name="${encodeURIComponent(company.name)}" class="w-full flex items-center justify-center gap-2 rounded-sm py-3.5 font-semibold text-sm" style="background:var(--ink); color:#fff">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
-        카탈로그 다운로드
-      </button>
     </div>
+  `;
+  document.getElementById('modal-footer').innerHTML = `
+    <button data-action="download-catalog" data-name="${encodeURIComponent(company.name)}" class="w-full flex items-center justify-center gap-2 rounded-sm py-3.5 font-semibold text-sm" style="background:var(--ink); color:#fff">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+      카탈로그 다운로드
+    </button>
   `;
   document.getElementById('modal-root').classList.remove('modal-hidden');
 }
