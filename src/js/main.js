@@ -809,6 +809,10 @@ const SUB_IMAGES = {
   'facade': 'https://raw.githubusercontent.com/nanaririri/ai/main/material.jpg',
   'outdoor-furniture': 'https://raw.githubusercontent.com/nanaririri/ai/main/outdoor.JPG',
   'modular-house': 'https://raw.githubusercontent.com/nanaririri/ai/main/com.JPG',
+  'raw-material': '/images/raw-material.jpg',
+  'installation': '/images/installation.jpg',
+  'curtain': '/images/curtain.png',
+  'office': '/images/office.jpg',
 };
 
 function stepOneHTML(){
