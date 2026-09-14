@@ -49,8 +49,8 @@ function companyLogo(name, size){
 
 const DATA = {
   interior: {
-    key:'interior', label:'인테리어', eyebrow:'INTERIOR MATERIALS',
-    desc:'원자재부터 창호, 커튼까지, 실내 공간을 완성하는 마감재를 모았습니다.',
+    key:'interior', label:'가구·인테리어', eyebrow:'FURNITURE & INTERIOR MATERIALS',
+    desc:'원자재부터 창호, 커튼까지, 실내 공간을 완성하는 가구와 마감재를 모았습니다.',
     subs:[
       {id:'raw-material', name:'원자재·부자재', icon:'raw-material', groups:[
         {name:'보드', companies:[
@@ -173,24 +173,9 @@ const DATA = {
           co('퍼시스오피스퍼니처','fursys-office',3), co('시디즈오피스','sidiz-office',2)
         ]},
       ]},
-      {id:'installation', name:'시공', icon:'construction-service', groups:[
-        {name:'가구시공', companies:[
-          co('가구시공전문코리아','furniture-install-korea',2), co('한샘가구시공','hanssem-furniture-install',2)
-        ]},
-        {name:'주방시공', companies:[
-          co('주방시공마스터','kitchen-install-master',2), co('한샘키친시공','hanssem-kitchen-install',2)
-        ]},
-        {name:'바스시공', companies:[
-          co('바스시공프로','bath-install-pro',2), co('욕실시공센터','bathroom-install-center',1)
-        ]},
-        {name:'오피스시공', companies:[
-          co('오피스인테리어시공','office-interior-install',2), co('사무공간시공','office-space-install',2)
-        ]},
-        {name:'기본공사', companies:[
-          co('기본공사전문업체','basic-construction-specialist',2), co('종합인테리어공사','general-interior-construction',2)
-        ]},
-        {name:'철거', companies:[
-          co('철거전문코리아','demolition-korea',2), co('클린철거서비스','clean-demolition-service',1)
+      {id:'metal', name:'금속', icon:'wall', groups:[
+        {name:'금속자재', companies:[
+          co('한국금속자재','korea-metal-materials',2), co('스틸프레임코리아','steel-frame-korea',2), co('스테인리스가공센터','stainless-processing-center',1)
         ]},
       ]},
     ]
@@ -199,7 +184,7 @@ const DATA = {
     key:'construction', label:'건축', eyebrow:'CONSTRUCTION MATERIALS',
     desc:'건물의 얼굴을 완성하는 외장 마감재부터 시공까지, 건축 전반의 기자재를 소개합니다.',
     subs:[
-      {id:'construction-work', name:'건축시공', icon:'construction-work', groups:[
+      {id:'construction-work', name:'건축마감', icon:'construction-work', groups:[
         {name:'단열재', companies:[
           co('경질우레탄단열재코리아','urethane-insulation-korea',2), co('케이씨씨외단열','kcc-insulation',3)
         ]},
@@ -252,14 +237,56 @@ const DATA = {
           co('그린모듈러하우스','green-modular-house',2), co('스마트모듈러코리아','smart-modular-korea',2)
         ]},
       ]},
-      {id:'construction-service', name:'시공', icon:'construction-service', groups:[
-        {name:'시공', companies:[
-          co('한빛종합건설','hanbit-construction',2), co('대성시공','daesung-construction',1)
+    ]
+  },
+  product: {
+    key:'product', label:'상품', eyebrow:'PRODUCTS',
+    desc:'검증된 협력업체가 제공하는 대표 상품을 한눈에 확인하세요.',
+    subs:[
+      {id:'appliances', name:'가전기기', icon:'wall', groups:[
+        {name:'가전기기', companies:[
+          co('삼성전자가전','samsung-appliances',3), co('LG전자가전','lg-appliances',3), co('위니아가전','winia-appliances',2)
+        ]},
+      ]},
+      {id:'general-product', name:'일반상품', icon:'wall', groups:[
+        {name:'일반상품', companies:[
+          co('생활용품코리아','household-goods-korea',1), co('홈퍼니싱마켓','home-furnishing-market',2)
         ]},
       ]},
       {id:'etc', name:'기타', icon:'wall', groups:[
         {name:'기타', companies:[
           co('워크업','workup',2), co('종합자재상사','general-materials-trading',1)
+        ]},
+      ]},
+    ]
+  },
+  installation: {
+    key:'installation', label:'시공', eyebrow:'INSTALLATION SERVICES',
+    desc:'가구·인테리어부터 건축 현장까지, 시공 전문 업체를 모았습니다.',
+    subs:[
+      {id:'furniture-interior-install', name:'가구·인테리어 시공', icon:'construction-service', groups:[
+        {name:'가구시공', companies:[
+          co('가구시공전문코리아','furniture-install-korea',2), co('한샘가구시공','hanssem-furniture-install',2)
+        ]},
+        {name:'주방시공', companies:[
+          co('주방시공마스터','kitchen-install-master',2), co('한샘키친시공','hanssem-kitchen-install',2)
+        ]},
+        {name:'바스시공', companies:[
+          co('바스시공프로','bath-install-pro',2), co('욕실시공센터','bathroom-install-center',1)
+        ]},
+        {name:'오피스시공', companies:[
+          co('오피스인테리어시공','office-interior-install',2), co('사무공간시공','office-space-install',2)
+        ]},
+        {name:'기본공사', companies:[
+          co('기본공사전문업체','basic-construction-specialist',2), co('종합인테리어공사','general-interior-construction',2)
+        ]},
+        {name:'철거', companies:[
+          co('철거전문코리아','demolition-korea',2), co('클린철거서비스','clean-demolition-service',1)
+        ]},
+      ]},
+      {id:'construction-site-install', name:'건축 시공', icon:'construction-service', groups:[
+        {name:'시공', companies:[
+          co('한빛종합건설','hanbit-construction',2), co('대성시공','daesung-construction',1)
         ]},
       ]},
     ]
@@ -808,11 +835,18 @@ const SUB_IMAGES = {
   'window-int': 'https://raw.githubusercontent.com/nanaririri/ai/main/window.JPG',
   'facade': 'https://raw.githubusercontent.com/nanaririri/ai/main/material.jpg',
   'outdoor-furniture': 'https://raw.githubusercontent.com/nanaririri/ai/main/outdoor.JPG',
-  'modular-house': 'https://raw.githubusercontent.com/nanaririri/ai/main/com.JPG',
   'raw-material': '/images/raw-material.jpg',
-  'installation': '/images/installation.jpg',
+  'furniture-interior-install': '/images/installation.jpg',
   'curtain': '/images/curtain.png',
   'office': '/images/office.jpg',
+  'metal': '/images/metal.jpg',
+  'outdoor-floor': '/images/outdoor-floor.png',
+  'architecture-design': '/images/architecture-design.png',
+  'modular-house': '/images/modular-house.png',
+  'sculpture': '/images/sculpture.png',
+  'appliances': '/images/appliances.png',
+  'general-product': '/images/general-product.png',
+  'construction-site-install': '/images/construction-site-install.jpg',
 };
 
 function stepOneHTML(){
@@ -846,24 +880,30 @@ function stepOneHTML(){
       <span id="voice-status" class="sr-only" aria-live="polite"></span>
     </div>
 
-    <div class="grid sm:grid-cols-2 gap-5 md:gap-6 stagger">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 stagger">
       ${heroCard('interior')}
       ${heroCard('construction')}
+      ${heroCard('product')}
+      ${heroCard('installation')}
     </div>
   </div>`;
 }
 
+const HERO_IMAGES = {
+  interior: 'https://raw.githubusercontent.com/nanaririri/ai/main/01.png',
+  construction: 'https://raw.githubusercontent.com/nanaririri/ai/main/02.JPG',
+  product: '/images/hero-product.png',
+  installation: '/images/hero-installation.jpg',
+};
 function heroCard(key){
   const d = DATA[key];
-  const bgUrl = key==='interior'
-    ? 'https://raw.githubusercontent.com/nanaririri/ai/main/01.png'
-    : 'https://raw.githubusercontent.com/nanaririri/ai/main/02.JPG';
+  const bgUrl = HERO_IMAGES[key];
   return `
   <button data-action="select-main" data-key="${key}" class="hero-card group text-left rounded-sm p-7 md:p-9 flex flex-col justify-end min-h-[280px] md:min-h-[340px]">
     <div class="hero-bg" style="background-image:url('${bgUrl}')"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h2 class="font-display font-700 text-4xl md:text-5xl tracking-tight mb-3" style="color:#fff">${d.label}</h2>
+      <h2 class="font-display font-700 text-[26px] md:text-[35px] tracking-tight mb-3" style="color:#fff">${d.label}</h2>
       <p class="text-sm max-w-xs" style="color:rgba(255,255,255,.85)">${d.desc}</p>
       <div class="mt-6 flex items-center gap-2 text-sm font-semibold" style="color:#fff">
         카테고리 보기
