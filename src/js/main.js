@@ -35,7 +35,8 @@ function co(name, slug, tier){
   };
 }
 const LOGO_IMAGE_OVERRIDES = {
-  '부림테크': 'https://raw.githubusercontent.com/nanaririri/ai/main/burim_logo.png'
+  '부림테크': 'https://raw.githubusercontent.com/nanaririri/ai/main/burim_logo.png',
+  'AGO': '/images/logo-ago.png'
 };
 function companyLogo(name, size){
   const override = LOGO_IMAGE_OVERRIDES[name];
@@ -833,7 +834,8 @@ const SUB_IMAGES = {
   'kitchen': 'https://raw.githubusercontent.com/nanaririri/ai/main/kitchen.JPG',
   'furniture-living': 'https://raw.githubusercontent.com/nanaririri/ai/main/living.JPG',
   'window-int': 'https://raw.githubusercontent.com/nanaririri/ai/main/window.JPG',
-  'facade': 'https://raw.githubusercontent.com/nanaririri/ai/main/material.jpg',
+  'construction-work': 'https://raw.githubusercontent.com/nanaririri/ai/main/material.jpg',
+  'facade': '/images/facade.jpg',
   'outdoor-furniture': 'https://raw.githubusercontent.com/nanaririri/ai/main/outdoor.JPG',
   'raw-material': '/images/raw-material.jpg',
   'furniture-interior-install': '/images/installation.jpg',
@@ -845,8 +847,9 @@ const SUB_IMAGES = {
   'modular-house': '/images/modular-house.png',
   'sculpture': '/images/sculpture.png',
   'appliances': '/images/appliances.png',
-  'general-product': '/images/general-product.png',
+  'general-product': '/images/hero-product.png',
   'construction-site-install': '/images/construction-site-install.jpg',
+  'etc': 'https://raw.githubusercontent.com/nanaririri/ai/main/wo04.JPG',
 };
 
 function stepOneHTML(){
