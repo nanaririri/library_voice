@@ -53,14 +53,6 @@ const DATA = {
     key:'interior', label:'가구·인테리어', eyebrow:'FURNITURE & INTERIOR MATERIALS',
     desc:'원자재부터 창호, 커튼까지, 실내 공간을 완성하는 가구와 마감재를 모았습니다.',
     subs:[
-      {id:'raw-material', name:'원자재·부자재', icon:'raw-material', groups:[
-        {name:'보드', companies:[
-          co('한솔보드','hansol-board',1), co('성창보드','sungchang-board',2)
-        ]},
-        {name:'앳지', companies:[
-          co('삼정엣지테크','samjeong-edgetech',1), co('코리아엣지밴드','korea-edgeband',2)
-        ]},
-      ]},
       {id:'furniture-living', name:'가구·리빙', icon:'living', groups:[
         {name:'가구부품 및 하드웨어', companies:[
           co('하펠레코리아','hafele-korea',3), co('블룸코리아','blum-korea',3), co('삼익하드웨어','samik-hardware',2), co('리바트','livart',3), co('일룸','iloom',2), co('데스커','desker',2)
@@ -78,6 +70,11 @@ const DATA = {
         ]},
         {name:'주방기기', companies:[
           co('인스밸리','insvalley',2), co('신일키친','shinil-kitchen',1), co('하츠주방기기','haatz-kitchen',2)
+        ]},
+      ]},
+      {id:'office', name:'오피스', icon:'office', groups:[
+        {name:'가구부품 및 하드웨어', companies:[
+          co('퍼시스오피스퍼니처','fursys-office',3), co('시디즈오피스','sidiz-office',2)
         ]},
       ]},
       {id:'bath', name:'바스', icon:'bath', groups:[
@@ -169,9 +166,12 @@ const DATA = {
           co('한섬커튼','hansum-curtain',2), co('코리아블라인드앤커튼','korea-blind-curtain',1)
         ]},
       ]},
-      {id:'office', name:'오피스', icon:'office', groups:[
-        {name:'가구부품 및 하드웨어', companies:[
-          co('퍼시스오피스퍼니처','fursys-office',3), co('시디즈오피스','sidiz-office',2)
+      {id:'raw-material', name:'원자재·부자재', icon:'raw-material', groups:[
+        {name:'보드', companies:[
+          co('한솔보드','hansol-board',1), co('성창보드','sungchang-board',2)
+        ]},
+        {name:'앳지', companies:[
+          co('삼정엣지테크','samjeong-edgetech',1), co('코리아엣지밴드','korea-edgeband',2)
         ]},
       ]},
       {id:'metal', name:'금속', icon:'wall', groups:[
