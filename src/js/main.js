@@ -249,7 +249,7 @@ const DATA = {
     subs:[
       {id:'appliances', name:'가전기기', icon:'wall', groups:[
         {name:'가전기기', companies:[
-          co('삼성전자가전','samsung-appliances',3), co('LG전자가전','lg-appliances',3), co('위니아가전','winia-appliances',2), co('에프에스 빌트인','fs-builtin',3)
+          co('에프에스 빌트인','fs-builtin',3), co('삼성전자가전','samsung-appliances',3), co('LG전자가전','lg-appliances',3), co('위니아가전','winia-appliances',2)
         ]},
       ]},
       {id:'general-product', name:'일반상품', icon:'wall', groups:[
@@ -270,7 +270,7 @@ const DATA = {
     subs:[
       {id:'furniture-interior-install', name:'가구·인테리어 시공', icon:'construction-service', groups:[
         {name:'가구시공', companies:[
-          co('가구시공전문코리아','furniture-install-korea',2), co('한샘가구시공','hanssem-furniture-install',2)
+          co('워너홈','warner-home',1), co('가구시공전문코리아','furniture-install-korea',2), co('한샘가구시공','hanssem-furniture-install',2)
         ]},
         {name:'주방시공', companies:[
           co('주방시공마스터','kitchen-install-master',2), co('한샘키친시공','hanssem-kitchen-install',2)
@@ -290,7 +290,7 @@ const DATA = {
       ]},
       {id:'construction-site-install', name:'건축 시공', icon:'construction-service', groups:[
         {name:'시공', companies:[
-          co('한빛종합건설','hanbit-construction',2), co('대성시공','daesung-construction',1), co('워너홈','warner-home',1)
+          co('한빛종합건설','hanbit-construction',2), co('대성시공','daesung-construction',1)
         ]},
       ]},
     ]
@@ -919,7 +919,7 @@ function stepOneHTML(){
     <div class="relative max-w-xl mb-10 md:mb-14">
       <div class="flex items-center gap-3 rounded-full pl-5 pr-2 py-2 border" style="border-color:var(--border); background:var(--surface)">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--gray); flex-shrink:0"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input id="search-input" type="text" autocomplete="off" placeholder="업체명, 카테고리 또는 대표제품을 검색해보세요.(예: 도어, 한솔도어)" class="flex-1 outline-none text-sm bg-transparent py-1.5" style="color:var(--ink)" />
+        <input id="search-input" type="text" autocomplete="off" placeholder="업체명, 카테고리를 검색해보세요.(예: 도어, 한솔도어)" class="flex-1 outline-none text-sm bg-transparent py-1.5" style="color:var(--ink)" />
         <button id="search-clear" data-action="search-clear" class="hidden shrink-0 mr-1" style="color:var(--gray)">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
@@ -1251,6 +1251,7 @@ function copyUrl(url, btn){
 /* ============================= CATALOG FILE OVERRIDES ============================= */
 const CATALOG_FILE_OVERRIDES = {
   '부림테크': 'https://raw.githubusercontent.com/nanaririri/ai/main/burim_catal.pdf',
+  'AGO': '/catalogs/ago_leaflet_2026.pdf',
 };
 
 function downloadCatalog(name){
@@ -1263,7 +1264,17 @@ function downloadCatalog(name){
   if(fileUrl){
     const a = document.createElement('a');
     a.href = fileUrl;
-    a.download = fileUrl.split('/').pop();
+    // data: URI로 내장된 경우 base64 안에 '/'가 많아 split('/').pop()으로는
+    // 올바른 파일명을 얻을 수 없으므로, 회사명 기반의 안전한 파일명을 사용합니다.
+    let ext = 'pdf';
+    if(fileUrl.startsWith('data:')){
+      const m = fileUrl.match(/^data:([^;]+);/);
+      if(m && m[1] === 'application/pdf') ext = 'pdf';
+    } else {
+      const last = fileUrl.split('/').pop().split(/[?#]/)[0];
+      if(last && last.includes('.')) ext = last.split('.').pop();
+    }
+    a.download = `${company.name}_catalog.${ext}`;
     a.target = '_blank';
     a.rel = 'noopener';
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
