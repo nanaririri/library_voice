@@ -36,7 +36,10 @@ function co(name, slug, tier){
 }
 const LOGO_IMAGE_OVERRIDES = {
   '부림테크': 'https://raw.githubusercontent.com/nanaririri/ai/main/burim_logo.png',
-  'AGO': '/images/logo-ago.png'
+  'AGO': '/images/logo-ago.png',
+  '92 scent': '/images/logo-92scent.png',
+  '에프에스 빌트인': '/images/logo-fs-builtin.png',
+  '일흥건영': '/images/logo-ilheung.png'
 };
 function companyLogo(name, size){
   const override = LOGO_IMAGE_OVERRIDES[name];
@@ -54,11 +57,11 @@ const DATA = {
     desc:'원자재부터 창호, 커튼까지, 실내 공간을 완성하는 가구와 마감재를 모았습니다.',
     subs:[
       {id:'furniture-living', name:'가구·리빙', icon:'living', groups:[
-        {name:'가구부품 및 하드웨어', companies:[
-          co('하펠레코리아','hafele-korea',3), co('블룸코리아','blum-korea',3), co('삼익하드웨어','samik-hardware',2), co('리바트','livart',3), co('일룸','iloom',2), co('데스커','desker',2)
-        ]},
         {name:'소품', companies:[
           co('AGO','ago',3), co('필립스조명코리아','philips-lighting-korea',3), co('코펜하겐라이팅','copenhagen-lighting',2), co('자코모패브릭','giacomo-fabric',2), co('92 scent','92-scent',2)
+        ]},
+        {name:'가구부품 및 하드웨어', companies:[
+          co('하펠레코리아','hafele-korea',3), co('블룸코리아','blum-korea',3), co('삼익하드웨어','samik-hardware',2), co('리바트','livart',3), co('일룸','iloom',2), co('데스커','desker',2)
         ]},
       ]},
       {id:'kitchen', name:'주방', icon:'kitchen', groups:[
@@ -186,6 +189,9 @@ const DATA = {
     desc:'건물의 얼굴을 완성하는 외장 마감재부터 시공까지, 건축 전반의 기자재를 소개합니다.',
     subs:[
       {id:'construction-work', name:'건축마감', icon:'construction-work', groups:[
+        {name:'흡음재', companies:[
+          co('일흥건영','ilheung-geonyeong',1)
+        ]},
         {name:'단열재', companies:[
           co('경질우레탄단열재코리아','urethane-insulation-korea',2), co('케이씨씨외단열','kcc-insulation',3)
         ]},
@@ -200,9 +206,6 @@ const DATA = {
         ]},
         {name:'블록', companies:[
           co('한일시멘트블록','hanil-cement-block',2)
-        ]},
-        {name:'흡음재', companies:[
-          co('일흥건영','ilheung-geonyeong',2)
         ]},
         {name:'유리', companies:[
           co('한글라스','hanglass-glass',3), co('KCC글라스','kcc-glass',3)
@@ -246,7 +249,7 @@ const DATA = {
     subs:[
       {id:'appliances', name:'가전기기', icon:'wall', groups:[
         {name:'가전기기', companies:[
-          co('삼성전자가전','samsung-appliances',3), co('LG전자가전','lg-appliances',3), co('위니아가전','winia-appliances',2)
+          co('삼성전자가전','samsung-appliances',3), co('LG전자가전','lg-appliances',3), co('위니아가전','winia-appliances',2), co('에프에스 빌트인','fs-builtin',3)
         ]},
       ]},
       {id:'general-product', name:'일반상품', icon:'wall', groups:[
@@ -287,7 +290,7 @@ const DATA = {
       ]},
       {id:'construction-site-install', name:'건축 시공', icon:'construction-service', groups:[
         {name:'시공', companies:[
-          co('한빛종합건설','hanbit-construction',2), co('대성시공','daesung-construction',1)
+          co('한빛종합건설','hanbit-construction',2), co('대성시공','daesung-construction',1), co('워너홈','warner-home',1)
         ]},
       ]},
     ]
@@ -300,12 +303,14 @@ const COMPANY_OVERRIDES = {
   '유송타일': {repProducts:'빅슬랩 타일 수입 업체', address:'서울특별시 강남구 논현로127길 7', homepage:'https://www.usong.co.kr/'},
   '아주스톤': {repProducts:'천연석 수입 및 시공 납품', address:'경상북도 경산시 와촌면 불굴사길 34', homepage:'https://www.ajustone.com/'},
   '포스코휴먼스': {repProducts:'클리닝', address:'경상북도 포항시 남구 동해안로6213번길 15-1 포스코휴먼스', homepage:'https://www.poscohumans.com/kr/main.do'},
-  '일흥건영': {repProducts:'흡음 기능 패널', address:'경기도 파주시 탄현면 축현산단로 88-25', homepage:'https://ganet.co.kr/'},
+  '일흥건영': {repProducts:'흡음 기능 패널', address:'경기도 파주시 탄현면 축현산단로 88-25', homepage:'https://ganet.co.kr/', registered:false, manufactureCountry:'국산', ceoName:'전명호', phone:'031-942-7031'},
   '미가월패널': {repProducts:'월패널, 루버, 몰딩류 업체', address:'경기도 파주시 월롱면 휴암로 117번길 45', homepage:'https://www.migaworld.com/'},
-  'AGO': {repProducts:'펜던트 조명', address:'서울특별시 중구 산림동 을지로 157', homepage:'https://agolighting.com/#/main'},
-  '92 scent': {repProducts:'감성 디퓨저, 캔들', address:'경기 평택시 장안웃길 56 206호 BI-004호', homepage:'https://92scent.com/'},
+  'AGO': {repProducts:'펜던트 조명', address:'서울특별시 중구 산림동 을지로 157', homepage:'https://agolighting.com/#/main', manufactureCountry:'수입', ceoName:'이우복', phone:'02-2268-0568'},
+  '92 scent': {repProducts:'감성 디퓨저, 캔들', address:'경기 평택시 장안웃길 56 206호 BI-004호', homepage:'https://92scent.com/', companyName:'에이쿠드', manufactureCountry:'국산', ceoName:'박다원', phone:'010-2056-7004', email:'acud2024@naver.com'},
   'SITE LESS': {repProducts:'건축, 도시전략, 인테리어, 전시, 공간브랜딩', address:'경기도 평택시 장안웃길 56 206호 BI-004호', homepage:'https://sitelessgroup.com/'},
   '워크업': {repProducts:'워크웨어(작업복): 선풍기 조끼, 방풍 자켓, 안전 조끼 등', address:'경기도 포천시 호국로 56', homepage:'https://www.workupkorea.com/'},
+  '에프에스 빌트인': {repProducts:'삼성전자 빌트인 가전 유통', address:'경기 성남시 분당구 탄천상로 164, D동 205호', homepage:'https://www.samsung.com/sec/business/', registered:true, businessType:'유통', manufactureCountry:'국산', ceoName:'오대현', phone:'070-4027-3282', email:'fsbuilt-in@hanmail.net'},
+  '워너홈': {repProducts:'리바트 주방 시공사', address:'경기 광명시 하안로 60(소하동, 광명테크노파크) E동 지하 105호', homepage:'-', registered:true, businessType:'시공', manufactureCountry:'국산', ceoName:'송희영', phone:'010-4601-1772', email:'-', hideProductSpecs:true},
 };
 Object.values(DATA).forEach(main=>{
   main.subs.forEach(sub=>{
@@ -316,8 +321,15 @@ Object.values(DATA).forEach(main=>{
           if(ov.repProducts) c.repProducts = ov.repProducts;
           if(ov.address) c.address = ov.address;
           if(ov.homepage) c.homepage = ov.homepage;
+          if(ov.manufactureCountry) c.manufactureCountry = ov.manufactureCountry;
+          if(ov.ceoName) c.ceoName = ov.ceoName;
+          if(ov.phone) c.phone = ov.phone;
+          if(ov.businessType) c.businessType = ov.businessType;
+          if(ov.email) c.email = ov.email;
+          if(ov.companyName) c.companyName = ov.companyName;
+          if(ov.hideProductSpecs) c.hideProductSpecs = ov.hideProductSpecs;
         }
-        c.registered = !!ov;
+        c.registered = (ov && Object.prototype.hasOwnProperty.call(ov,'registered')) ? ov.registered : !!ov;
       });
     });
   });
@@ -463,6 +475,46 @@ const PRODUCT_IMAGE_OVERRIDES = {
     { name:'워크업', img:'https://raw.githubusercontent.com/nanaririri/ai/main/wo02.JPG' },
     { name:'워크업', img:'https://raw.githubusercontent.com/nanaririri/ai/main/wo03.JPG' },
     { name:'워크업', img:'https://raw.githubusercontent.com/nanaririri/ai/main/wo04.JPG' },
+  ],
+  '에프에스 빌트인': [
+    { name:'냉장고', img:'/images/fs-builtin-fridge.jpg' },
+    { name:'인덕션', img:'/images/fs-builtin-induction.jpg' },
+    { name:'시스템에어컨', img:'/images/fs-builtin-aircon.jpg' },
+    { name:'식기세척기', img:'/images/fs-builtin-dishwasher.jpg' },
+  ],
+  '워너홈': [
+    { name:'워너홈', img:'/images/warner-home-01.jpg' },
+    { name:'워너홈', img:'/images/warner-home-02.jpg' },
+    { name:'워너홈', img:'/images/warner-home-03.jpg' },
+    { name:'워너홈', img:'/images/warner-home-04.jpg' },
+  ],
+};
+
+/* per-company real product spec (용도/소재/색상/규격/무게) — overrides the generic예시 spec generator */
+const PRODUCT_SPEC_OVERRIDES = {
+  'AGO': [
+    { purpose:'팬던트', material:'도장 스틸, 오팔유리', color:'그레이', size:'W197xH197xD200mm', weight:'1.9kg' },
+    { purpose:'팬던트', material:'알루미늄, 유백유리', color:'블랙', size:'W613xH64mm', weight:'1.6kg' },
+    { purpose:'팬던트', material:'알루미늄, 오팔유리', color:'유색', size:'W357xH347mm', weight:'2.2kg' },
+    { purpose:'팬던트', material:'알루미늄도장, 유백유리', color:'유색', size:'W210xH110mm', weight:'1.3kg' },
+  ],
+  '92 scent': [
+    { purpose:'디퓨져', material:'액체용액', size:'W100xH100xD140mm' },
+    { purpose:'디퓨져', material:'액체용액', size:'W100xH100xD140mm' },
+    { purpose:'디퓨져', material:'액체용액', size:'W100xH100xD140mm' },
+    { purpose:'디퓨져', material:'액체용액', size:'W100xH100xD140mm' },
+  ],
+  '일흥건영': [
+    { purpose:'실내 마감재', material:'자작합판', color:'우드지정 (판넬당 루버수 15개)', size:'W600xH21xD2400mm', weight:'10kg' },
+    { purpose:'실내 마감재', material:'자작합판', color:'우드지정 (판넬당 루버수 15개)', size:'W600xH21xD2400mm', weight:'10kg' },
+    { purpose:'실내 마감재', material:'자작합판', color:'우드지정 (판넬당 루버수 15개)', size:'W600xH21xD2400mm', weight:'10kg' },
+    { purpose:'실내 마감재', material:'자작합판', color:'우드지정 (판넬당 루버수 15개)', size:'W600xH21xD2400mm', weight:'10kg' },
+  ],
+  '에프에스 빌트인': [
+    { purpose:'냉장고', material:'글라스', color:'비스포크', size:'W912xH697xD1853', weight:'139kg' },
+    { purpose:'인덕션', material:'글라스', color:'블랙', size:'W600xH560xD50', weight:'14kg' },
+    { purpose:'시스템에어컨', material:'-', color:'화이트', size:'W979xH135xD410', weight:'10kg' },
+    { purpose:'식기세척기', material:'-', color:'가구부착형', size:'W600xH570xD820', weight:'55kg' },
   ],
 };
 
@@ -1056,6 +1108,11 @@ function showCompanyModalUI(name){
             <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">브랜드명</span>
             <span class="text-sm font-semibold" style="color:var(--ink)">${company.name}</span>
           </div>
+          ${company.companyName ? `
+          <div class="info-row flex items-center justify-between px-4 py-3.5">
+            <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">업체명</span>
+            <span class="text-sm font-semibold" style="color:var(--ink)">${company.companyName}</span>
+          </div>` : ''}
           <div class="info-row flex items-center justify-between px-4 py-3.5">
             <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">주소</span>
             <span class="text-sm text-right max-w-[65%]" style="color:var(--ink)">${company.address}</span>
@@ -1096,10 +1153,13 @@ function showCompanyModalUI(name){
           </div>
           <div class="info-row flex items-center justify-between px-4 py-3.5">
             <span class="text-xs font-mono tracking-wide" style="color:var(--gray)">E-mail</span>
-            <a href="mailto:${company.email}" class="text-sm font-semibold truncate max-w-[65%]" style="color:var(--accent)">${company.email}</a>
+            ${company.email && company.email !== '-'
+              ? `<a href="mailto:${company.email}" class="text-sm font-semibold truncate max-w-[65%]" style="color:var(--accent)">${company.email}</a>`
+              : `<span class="text-sm font-semibold" style="color:var(--gray)">-</span>`}
           </div>
           <div class="info-row flex items-center justify-between gap-3 px-4 py-3.5">
             <span class="text-xs font-mono tracking-wide shrink-0" style="color:var(--gray)">홈페이지</span>
+            ${company.homepage && company.homepage !== '-' ? `
             <div class="flex items-center gap-2 min-w-0">
               <span class="text-sm truncate max-w-[140px] sm:max-w-[180px]" style="color:var(--ink)" title="${company.homepage}">${company.homepage.replace(/^https?:\/\//,'')}</span>
               <button type="button" data-action="copy-url" data-url="${encodeURIComponent(company.homepage)}" class="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style="background:var(--accent-soft); color:var(--accent)" title="URL 복사">
@@ -1109,7 +1169,7 @@ function showCompanyModalUI(name){
                 방문하기
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
               </a>
-            </div>
+            </div>` : `<span class="text-sm font-semibold" style="color:var(--gray)">-</span>`}
           </div>
         </div>
 
@@ -1117,7 +1177,8 @@ function showCompanyModalUI(name){
           <p class="text-xs font-mono tracking-wide mb-3" style="color:var(--gray)">취급 제품</p>
           <div class="grid grid-cols-2 gap-3">
             ${products.map((p,i)=>{
-              const spec = productSpecs(i);
+              const overrideSpecs = PRODUCT_SPEC_OVERRIDES[company.name];
+              const spec = (overrideSpecs && overrideSpecs[i]) || productSpecs(i);
               return `
               <div>
                 <div class="product-thumb rounded-sm flex items-center justify-center" style="${hasRealPhotos ? '' : `background:${p.bg}`}">
@@ -1126,13 +1187,13 @@ function showCompanyModalUI(name){
                     : `<div style="color:rgba(24,23,15,.55); width:34px; height:34px;">${icon(s.icon,'w-full h-full')}</div>`
                   }
                 </div>
-                <div class="mt-2 space-y-1 text-sm leading-snug">
-                  <div><span class="font-mono text-[11px]" style="color:var(--gray)">용도</span> <span class="font-medium" style="color:var(--ink)">${spec.purpose}</span></div>
-                  <div><span class="font-mono text-[11px]" style="color:var(--gray)">소재</span> <span class="font-medium" style="color:var(--ink)">${spec.material}</span></div>
-                  <div><span class="font-mono text-[11px]" style="color:var(--gray)">색상</span> <span class="font-medium" style="color:var(--ink)">${spec.color}</span></div>
-                  <div class="flex items-start gap-1"><span class="font-mono text-[11px] shrink-0" style="color:var(--gray)">규격</span><span class="font-medium min-w-0 flex-1" style="color:var(--ink)">${spec.size}</span></div>
-                  <div><span class="font-mono text-[11px]" style="color:var(--gray)">무게</span> <span class="font-medium" style="color:var(--ink)">${spec.weight}</span></div>
-                </div>
+                ${company.hideProductSpecs ? '' : `<div class="mt-2 space-y-1 text-sm leading-snug">
+                  ${spec.purpose ? `<div><span class="font-mono text-[11px]" style="color:var(--gray)">용도</span> <span class="font-medium" style="color:var(--ink)">${spec.purpose}</span></div>` : ''}
+                  ${spec.material ? `<div><span class="font-mono text-[11px]" style="color:var(--gray)">소재</span> <span class="font-medium" style="color:var(--ink)">${spec.material}</span></div>` : ''}
+                  ${spec.color ? `<div><span class="font-mono text-[11px]" style="color:var(--gray)">색상</span> <span class="font-medium" style="color:var(--ink)">${spec.color}</span></div>` : ''}
+                  ${spec.size ? `<div class="flex items-start gap-1"><span class="font-mono text-[11px] shrink-0" style="color:var(--gray)">규격</span><span class="font-medium min-w-0 flex-1" style="color:var(--ink)">${spec.size}</span></div>` : ''}
+                  ${spec.weight ? `<div><span class="font-mono text-[11px]" style="color:var(--gray)">무게</span> <span class="font-medium" style="color:var(--ink)">${spec.weight}</span></div>` : ''}
+                </div>`}
               </div>
             `;}).join('')}
           </div>
